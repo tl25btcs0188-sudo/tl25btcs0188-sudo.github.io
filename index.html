@@ -10,26 +10,89 @@
         /* Use a nice, modern font like Inter */
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1f2937, #374151); /* A more subtle, dark gradient */
         }
+
+        /* Custom CSS for a subtle background animation */
+        @keyframes bg-pan {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .animated-bg {
+            background-size: 200% 200%;
+            animation: bg-pan 15s ease infinite;
+        }
+
+        /* Animated fade-in for sections */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-element {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* A pulsating effect for the profile picture border */
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.33);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        .pulse-animation {
+            animation: pulse-ring 2.5s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+        }
+
+        /* A more pronounced hover effect for social links */
+        .social-link:hover {
+            color: #ec4899; /* Tailwind fuchsia-500 */
+            text-shadow: 0 0 8px rgba(236, 72, 153, 0.7);
+        }
+
     </style>
 </head>
-<body class="bg-gray-900 text-gray-200">
+<body class="text-gray-200">
 
     <!-- Main Container -->
     <div class="min-h-screen flex flex-col items-center p-4 sm:p-8">
 
         <!-- Hero Section -->
-        <header class="text-center py-16 px-4 sm:px-8 max-w-4xl mx-auto">
-            <div class="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-emerald-500 shadow-lg">
+        <header class="text-center py-16 px-4 sm:px-8 max-w-4xl mx-auto fade-in-element" style="animation-delay: 0.2s;">
+            <div class="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-fuchsia-500 shadow-lg group">
+                <!-- Inner element for the pulsating effect -->
+                <div class="absolute inset-0 rounded-full border border-fuchsia-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pulse-animation"></div>
                 <img src="https://placehold.co/128x128/334155/e2e8f0?text=Akshay" alt="Akshay T S" class="w-full h-full object-cover">
             </div>
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-2 text-white">Akshay T S</h1>
-            <p class="text-lg sm:text-xl font-medium text-emerald-300">B.Tech Student | Vidya Academy of Science and Technology</p>
+            <p class="text-lg sm:text-xl font-medium text-cyan-400">B.Tech Student | Vidya Academy of Science and Technology</p>
             <p class="text-md sm:text-lg text-gray-400 mt-2">Based in Thrissur, Kerala</p>
         </header>
 
         <!-- About Me Section -->
-        <section id="about" class="w-full max-w-4xl mx-auto py-12 px-6 sm:px-8 bg-gray-800 rounded-3xl shadow-lg mb-8">
+        <section id="about" class="w-full max-w-4xl mx-auto py-12 px-6 sm:px-8 bg-gray-800 rounded-3xl shadow-lg mb-8 fade-in-element" style="animation-delay: 0.4s;">
             <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-white text-center">About Me</h2>
             <p class="text-center text-gray-300 leading-relaxed text-md sm:text-lg">
                 I am currently pursuing my B.Tech degree at Vidya Academy of Science and Technology. I am passionate about technology and software development. This portfolio is a starting point to showcase my skills and projects as I continue my journey in the world of engineering.
@@ -37,7 +100,7 @@
         </section>
 
         <!-- Skills Section (Placeholder) -->
-        <section id="skills" class="w-full max-w-4xl mx-auto py-12 px-6 sm:px-8 bg-gray-800 rounded-3xl shadow-lg mb-8">
+        <section id="skills" class="w-full max-w-4xl mx-auto py-12 px-6 sm:px-8 bg-gray-800 rounded-3xl shadow-lg mb-8 fade-in-element" style="animation-delay: 0.6s;">
             <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-white text-center">Skills</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center">
                 <div class="bg-gray-700 p-4 rounded-xl shadow-md transition transform hover:scale-105 duration-300">
@@ -62,32 +125,32 @@
         </section>
 
         <!-- Projects Section (Placeholder) -->
-        <section id="projects" class="w-full max-w-4xl mx-auto py-12 px-6 sm:px-8 bg-gray-800 rounded-3xl shadow-lg mb-8">
+        <section id="projects" class="w-full max-w-4xl mx-auto py-12 px-6 sm:px-8 bg-gray-800 rounded-3xl shadow-lg mb-8 fade-in-element" style="animation-delay: 0.8s;">
             <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-white text-center">Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Project 1 -->
                 <div class="bg-gray-700 p-6 rounded-xl shadow-md">
                     <h3 class="text-xl font-bold mb-2 text-white">Project Title 1</h3>
                     <p class="text-gray-300 mb-4">A brief description of your project. Mention the technologies used and its purpose.</p>
-                    <a href="#" class="inline-block bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-emerald-600 transition duration-300">View Project</a>
+                    <a href="#" class="inline-block bg-fuchsia-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-fuchsia-600 transition duration-300">View Project</a>
                 </div>
                 <!-- Project 2 -->
                 <div class="bg-gray-700 p-6 rounded-xl shadow-md">
                     <h3 class="text-xl font-bold mb-2 text-white">Project Title 2</h3>
                     <p class="text-gray-300 mb-4">A brief description of your project. Mention the technologies used and its purpose.</p>
-                    <a href="#" class="inline-block bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-emerald-600 transition duration-300">View Project</a>
+                    <a href="#" class="inline-block bg-fuchsia-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-fuchsia-600 transition duration-300">View Project</a>
                 </div>
             </div>
         </section>
 
         <!-- Footer with Social Links -->
-        <footer class="w-full max-w-4xl mx-auto py-6 px-6 sm:px-8 text-center text-gray-500">
+        <footer class="w-full max-w-4xl mx-auto py-6 px-6 sm:px-8 text-center text-gray-500 fade-in-element" style="animation-delay: 1.0s;">
             <div class="flex justify-center space-x-4 mb-4">
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">GitHub</a>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">LinkedIn</a>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Email</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300 social-link">GitHub</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300 social-link">LinkedIn</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300 social-link">Email</a>
             </div>
-            <p>&copy; 2024 Akshay T S. All rights reserved.</p>
+            <p>&copy; 2025 Akshay T S. All rights reserved.</p>
         </footer>
 
     </div>
